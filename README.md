@@ -1,1 +1,7 @@
-# tark-retseptiraamat
+# Tark retseptiraamat
+
+## Projekti kirjeldus
+
+### Projekti funktsionaalsused
+
+## Projekti autorid
