@@ -1,0 +1,20 @@
+.Nav{
+    text-align: center;
+}
+  
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    background: #8096acb7;
+    color: white;
+}
+
+.nav-links {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    align-items: center;
+}

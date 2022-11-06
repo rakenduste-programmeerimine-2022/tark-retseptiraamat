@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, Router, BrowserRouter } from "react-router-dom";
+import { Link, BrowserRouter } from "react-router-dom";
+import "./styles/Nav.css";
 
 function Nav() {
     const navStyle = {
@@ -9,16 +10,10 @@ function Nav() {
     return (
         <nav>
             <BrowserRouter>
-
-            <ul>
-            <li>
+            <ul className="nav-links">
                 <Link style={navStyle} to="/myfeed">MyFeed</Link>
-            </li>
-            <li>
                 <Link style={navStyle} to="/myrecipes">MyRecipes</Link>
-            </li>
             </ul>
-
             </BrowserRouter>
         </nav>
     );
