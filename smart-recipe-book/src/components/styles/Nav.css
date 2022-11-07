@@ -1,8 +1,8 @@
 nav {
     display: flex;
-    justify-content: space-around;
+    /*justify-content: space-around;*/
     min-height: 20vh;
-    background: #8096acb7;
+    background: #5e89b4b7;
 }
 
 .nav-links {
@@ -23,4 +23,6 @@ nav {
     font-weight: bold;
     font-family: 'exo2', sans-serif;
     color: white;
+
+    padding-left: 3%;
 }
