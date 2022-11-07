@@ -1,27 +1,15 @@
-const router = require('express').Router();
-let User = require('../models/user.model');
+const express = require('express');
+const {
+    getAllUsers,
+    AddUser,
+    deleteUserById,
+    updateUserById
+} = require('../controllers/userControllers');
+const router = express.Router();
 
-router.route('/').get((req, res) => {
-    User.find()
-        .then(users => res.json(users))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-
-router.route('/add').post((req, res) => {
-    const username = req.body.username;
-    const email = req.body.email;
-    const password = req.body.password;
-
-
-    const newUser = new User({
-        username,
-        email,
-        password,
-    });
-
-    newUser.save()
-        .then(() => res.json('User added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
+router.get('/', getAllUsers);
+router.post('/add', AddUser);
+router.post('/delete/:id', deleteUserById);
+router.post('/update/:id', updateUserById);
 
 module.exports = router;
