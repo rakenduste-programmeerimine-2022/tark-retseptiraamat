@@ -1,20 +1,18 @@
 import React from "react";
 import { Link, BrowserRouter } from "react-router-dom";
 import "./styles/Nav.css";
+import Button from '@mui/material/Button';
 
 function Nav() {
-    const navStyle = {
-        color: 'black'
-    };
 
     return (
         <nav>
+            <h2 className="nav-title">Smart Recipe Book</h2>
             <BrowserRouter>
-            <ul className="nav-links">
-                <Link style={navStyle} to="/myfeed">MyFeed</Link>
-                <Link style={navStyle} to="/myrecipes">MyRecipes</Link>
-            </ul>
+                <Link className="nav-links" to="/myfeed">MyFeed</Link>
+                <Link className="nav-links" to="/myrecipes">MyRecipes</Link>
             </BrowserRouter>
+            <Button></Button>
         </nav>
     );
 }
