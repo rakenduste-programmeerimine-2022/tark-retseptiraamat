@@ -1,7 +1,6 @@
 import React from 'react';
-import LogIn from '../components/LogIn';
 import NavLoggedOut from '../components/NavLoggedOut';
-import "../components/styles/TheFeed.css";
+import LogIn from '../components/LogIn';
 
 function TheFeed() {
     return (
