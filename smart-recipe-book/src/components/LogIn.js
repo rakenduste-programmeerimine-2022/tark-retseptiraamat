@@ -20,7 +20,7 @@ function LogIn() {
                     <TextField label="Password" placeholder="Enter your password" fullWidth required />
 
                     <Button sx={{marginTop: "5px", color: "#5e89b4b7"}}>Don't have an account?</Button>
-                    <Button sx={{marginTop: "15px", backgroundColor: "#5e89b4b7"}} variant="contained" onSubmit={handleLogin}>Log in</Button>
+                    <Button sx={{marginTop: "15px", backgroundColor: "#5e89b4b7"}} variant="contained">Log in</Button>
                 </Grid>
             </Paper>
         </>
