@@ -6,7 +6,6 @@ function TheFeed() {
     return (
         <>
             <NavLoggedOut />
-            <LogIn />
         </>
     );
 }
