@@ -1,12 +1,14 @@
 import React from 'react';
 import NavLoggedOut from '../components/NavLoggedOut';
-import LogIn from '../components/LogIn';
+import MakeCard from '../components/MakeCard';
+
+//import pizza from '../components/pizza.jpg';
 
 function TheFeed() {
     return (
         <>
             <NavLoggedOut />
-            <LogIn />
+            <MakeCard />
         </>
     );
 }
