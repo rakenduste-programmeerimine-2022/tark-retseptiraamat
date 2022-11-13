@@ -3,16 +3,15 @@ import { Grid, Paper, Typography, Button, TextField } from "@mui/material";
 
 function LogIn() {
     const paperStyle = {
-        padding: 20,
-        height: "70vh",
-        width: 280,
+        padding: "20px",
+        height: "280px",
+        width: "280px",
         margin: "100px auto",
     };
-    
 
     return (
         <>
-            <Paper sx={{height: "10px"}} elevation={20} style={paperStyle}>
+            <Paper elevation={20} style={paperStyle}>
                 <Grid align="center">
                     <Typography sx={{color: "#5e89b4b7", paddingBottom: "20px"}} variant="h5">Log in</Typography>
 
