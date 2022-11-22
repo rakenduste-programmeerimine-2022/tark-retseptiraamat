@@ -1,20 +1,34 @@
-import React from "react";
+import { React, useState } from "react";
+import { AppBar, Toolbar, Typography, Button } from "@mui/material";
 
-import { AppBar, Tab, Tabs, Toolbar, Typography } from "@mui/material";
-import Button from '@mui/material/Button';
+import LogIn from "./LogIn";
+import Register from "./Register";
 
 function NavLoggedOut() {
-    return (
-        <React.Fragment>
-            <AppBar sx={{background: "#5e89b4b7"}}>
-                <Toolbar>
-                    <Typography sx={{fontSize: "1.5rem", marginRight: "50px"}}>Smart Recipe Book</Typography>
 
-                    <Button sx={{marginRight: "10px", color: "white"}}>Log in</Button>
-                    <Button sx={{color: "white"}}>Register</Button>
-                </Toolbar>
-            </AppBar>
-        </React.Fragment>
+    const [login, loginIsShown] = useState(false);
+    const LoginClick = () => {
+        loginIsShown(true);
+    };
+
+    const [register, registerIsShown] = useState(false);
+    const RegisterClick = () => {
+        registerIsShown(true);
+    }
+
+    return (
+        <>
+        <AppBar sx={{background: "#5e89b4b7"}}>
+            <Toolbar>
+                <Typography sx={{fontSize: "1.5rem", marginRight: "50px"}}>Smart Recipe Book</Typography>
+
+                <Button sx={{marginRight: "10px", color: "white"}} onClick={LoginClick}>Log in</Button>
+                <Button sx={{color: "white"}} onClick={RegisterClick}>Register</Button>
+            </Toolbar>
+        </AppBar>
+        {login && <LogIn />}
+        {register && <Register />}
+        </>
     );
 }
 
