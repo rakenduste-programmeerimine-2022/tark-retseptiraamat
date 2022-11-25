@@ -1,5 +1,9 @@
 import React from 'react';
 import NavLoggedOut from '../components/NavLoggedOut';
+import MakeCard from '../components/MakeCard';
+import data from '../components/data.js';
+
+import {Grid} from '@mui/material';
 
 function TheFeed() {
     return (
