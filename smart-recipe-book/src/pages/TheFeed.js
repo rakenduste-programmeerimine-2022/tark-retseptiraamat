@@ -9,6 +9,7 @@ function TheFeed() {
     return (
         <>
             <NavLoggedOut />
+            
             <Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px"}}>
             {data.map(data => (
                 <MakeCard 

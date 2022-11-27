@@ -1,22 +1,31 @@
 import React from "react";
 
-import { AppBar, Tab, Tabs, Toolbar, Typography } from "@mui/material";
-import Button from '@mui/material/Button';
+import { Button, AppBar, Toolbar, Typography, Stack, Box } from "@mui/material";
 
 function NavLoggedIn() {
+
+    const MyFeedClick = () => {
+        window.location.href = "/myfeed";
+    };
+   
+    const MyRecipesClick = () => {
+        window.location.href = "/myrecipes";
+    };
+
     return (
         <React.Fragment>
             <AppBar sx={{background: "#5e89b4b7"}}>
                 <Toolbar>
                     <Typography sx={{fontSize: "1.5rem", marginRight: "50px"}}>Smart Recipe Book</Typography>
-
-                    <Tabs sx={{marginLeft: "50px"}} textColor="inherit">
-                        <Tab label="My Feed" />
-                        <Tab label="My Recipes" />
-                    </Tabs>
-
-                    <Button sx={{marginRight: "10px", color: "white"}}>Log in</Button>
-                    <Button sx={{color: "white"}}>Register</Button>
+                    
+                    <Box sx={{marginLeft: "50px", flexGrow: "1"}}>
+                        <Button onClick={MyFeedClick} sx={{paddingRight: "30px", fontSize: "1rem", color: "white"}}>My Feed</Button>
+                        <Button onClick={MyRecipesClick} sx={{fontSize: "1rem", color: "white"}}>My Recipes</Button>
+                    </Box>
+                    
+                    <Stack sx={{direction: "row", spacing: "2"}}>
+                        <Button sx={{fontSize: "1rem", color: "white"}}>Log out</Button>
+                    </Stack>
                 </Toolbar>
             </AppBar>
         </React.Fragment>
