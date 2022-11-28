@@ -2,9 +2,8 @@ import React from 'react';
 import { Card, Button, Typography, CardMedia, Box, Grid} from '@mui/material';
 
 import pizza from './pizza.jpg';
-import data from './data';
 
-function MakeCard(props) {
+function MakeMyCard(props) {
     
     return (
         <div key={props.id}>
@@ -23,4 +22,4 @@ function MakeCard(props) {
     );
 }
 
-export default MakeCard;
+export default MakeMyCard;

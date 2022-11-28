@@ -22,7 +22,7 @@ function LogIn() {
             .then(res => console.log(res.data))
             .catch(err => console.log(err));
 
-        window.location = '/myfeed';
+            window.location.href = "/myfeed";
     };
     return (
         <>

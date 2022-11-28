@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import TheFeed from './pages/TheFeed';
+
+import Routing from './components/Routing';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TheFeed />
+    <Routing />
   </React.StrictMode>
 );
