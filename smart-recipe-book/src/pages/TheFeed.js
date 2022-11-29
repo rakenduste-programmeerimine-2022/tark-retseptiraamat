@@ -17,7 +17,6 @@ function TheFeed() {
                     image={data.image}
                     title={data.title}
                     description={data.description}
-                    url={data.url}
                 />
             ))}
             </Grid>
