@@ -27,12 +27,16 @@ const createRecipe = async (req, res) => {
     const ingredients = req.body.ingredients;
     const instructions = req.body.instructions;
     const username = req.body.username;
+    const description = req.body.description;
+    const picture = req.body.picture;
 
     const newRecipe = new recipe({
         name,
         ingredients,
         instructions,
         username,
+        description,
+        picture,
     });
 
     newRecipe.save()
