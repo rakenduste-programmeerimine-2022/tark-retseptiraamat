@@ -2,7 +2,11 @@ import React from 'react';
 import { Card, Button, Typography, CardMedia, Box, Grid} from '@mui/material';
 
 function MakeCard(props) {
-    
+
+    const ViewMoreClick = () => {
+        window.location.href = "/fullview";
+    };
+
     return (
         <div key={props.id}>
             
@@ -12,8 +16,8 @@ function MakeCard(props) {
                 <Typography sx={{fontSize: "1.5rem", color: "grey"}}>{props.name}</Typography>
                 <Typography sx={{paddingBottom: "10px", color: "grey"}}>{props.description}</Typography>
                 
-                <Box sx={{textAlign: "center"}}>
-                <Button sx={{color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold"}} >View recipe</Button>
+                <Box sx={{textAlign: "center"}}> 
+                <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold"}}>View recipe</Button>
                 </Box>
             </Card>
         </div>

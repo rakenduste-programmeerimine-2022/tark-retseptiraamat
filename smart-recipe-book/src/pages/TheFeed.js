@@ -30,8 +30,6 @@ function TheFeed() {
                     description={recipe.description}
                     username={recipe.username}
                     picture={recipe.picture}
-
-
                 />
             ))}
             </Grid>

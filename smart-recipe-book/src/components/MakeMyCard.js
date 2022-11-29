@@ -4,6 +4,10 @@ import { Card, Button, Typography, CardMedia, Box, Grid} from '@mui/material';
 import pizza from './pizza.jpg';
 
 function MakeMyCard(props) {
+
+    const ViewMoreClick = () => {
+        window.location.href = "/fullview";
+    };
     
     return (
         <div key={props.id}>
@@ -15,7 +19,7 @@ function MakeMyCard(props) {
                 <Typography sx={{paddingBottom: "10px", color: "grey"}}>{props.description}</Typography>
                 
                 <Box sx={{textAlign: "center"}}>
-                <Button sx={{color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold"}} href={props.url}>View recipe</Button>
+                <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold"}}>View recipe</Button>
                 </Box>
             </Card>
         </div>
