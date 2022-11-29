@@ -8,12 +8,14 @@ function NavLoggedOut() {
 
     const [login, loginIsShown] = useState(false);
     const LoginClick = () => {
-        loginIsShown(true);
+        loginIsShown(!login);
+        registerIsShown(false);
     };
 
     const [register, registerIsShown] = useState(false);
     const RegisterClick = () => {
-        registerIsShown(true);
+        registerIsShown(!register);
+        loginIsShown(false);
     }
 
     return (

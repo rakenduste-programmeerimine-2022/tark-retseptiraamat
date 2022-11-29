@@ -5,6 +5,8 @@ import axios from "axios";
 
 function LogIn() {
     const paperStyle = {
+        position: "fixed",
+        left: "40%",
         padding: "20px",
         height: "280px",
         width: "280px",
@@ -27,7 +29,7 @@ function LogIn() {
     return (
         <>
             <Paper elevation={20} style={paperStyle}>
-                <Grid align="center">
+                <Grid align="center" >
                     <Typography sx={{color: "#5e89b4b7", paddingBottom: "20px"}} variant="h5">Log in</Typography>
 
                     <form onSubmit={handleSubmit}>
