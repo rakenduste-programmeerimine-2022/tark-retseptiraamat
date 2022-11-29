@@ -36,7 +36,7 @@ function Register() {
                     <form onSubmit={handleSubmit}>
                         <TextField sx={{paddingBottom: "15px"}} label="Email" name="email" placeholder="Enter your email address" fullWidth required />
                         <TextField sx={{paddingBottom: "15px"}} label="Username" name="username" placeholder="Enter username" fullWidth required />
-                        <TextField label="Password" placeholder="Enter your password" name="password"fullWidth required />
+                        <TextField label="Password" placeholder="Enter your password" type="password" name="password"fullWidth required />
 
                         <Button sx={{marginTop: "5px", color: "#5e89b4b7"}} >Already have an account?</Button>
                         <Button sx={{marginTop: "15px", backgroundColor: "#5e89b4b7"}} variant="contained" type="submit">Register</Button>

@@ -34,7 +34,7 @@ function LogIn() {
 
                     <form onSubmit={handleSubmit}>
                         <TextField sx={{paddingBottom: "15px"}} label="Email" placeholder="Enter your email address" name="email" fullWidth required />
-                        <TextField label="Password" placeholder="Enter your password" name="password" fullWidth required />
+                        <TextField label="Password" placeholder="Enter your password" type="password" name="password" fullWidth required />
 
                         <Button sx={{marginTop: "15px", backgroundColor: "#5e89b4b7"}} variant="contained" type="submit">Log in</Button>
                     </form>
