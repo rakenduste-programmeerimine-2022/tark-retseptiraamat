@@ -6,7 +6,7 @@ import MakeCard from '../components/MakeCard';
 import axios from 'axios';
 
 function TheFeed() {
-    //returns cards for each recipe in throug a post request from the database
+    
     const [recipes, setRecipes] = React.useState([]);
     React.useEffect(() => {
         axios.get('http://localhost:5000/recipe/')
@@ -15,6 +15,7 @@ function TheFeed() {
             })
             .catch(err => console.log(err));
     }, []);
+    
     return (
         <>
             <NavLoggedOut />
@@ -24,6 +25,7 @@ function TheFeed() {
                     
                 <MakeCard 
                     key={recipe._id}
+                    id={recipe._id}
                     name={recipe.name}
                     instructions={recipe.instructions}
                     ingredients={recipe.ingredients}

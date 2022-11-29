@@ -6,7 +6,7 @@ import pizza from './pizza.jpg';
 function MakeMyCard(props) {
 
     const ViewMoreClick = () => {
-        window.location.href = "/fullview";
+        window.location.href = "/fullview/" + props.key;
     };
     
     return (

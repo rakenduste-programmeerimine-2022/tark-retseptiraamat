@@ -6,6 +6,7 @@ import ramen from './ramen.jpg';
 function FullView(props) {
     return (
         <>
+
             <Grid item xs={12} gridTemplateColumns={2} container spacing={1} sx={{padding: "1%", marginTop: "80px"}}>
         
                 <Grid item xs={5} sx={{paddingRight: "50px"}}>

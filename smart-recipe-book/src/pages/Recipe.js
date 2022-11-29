@@ -9,7 +9,7 @@ function Recipe() {
     const [recipes, setRecipe] = React.useState({});
 
     React.useEffect(() => {
-        axios.get('http://localhost:5000/recipe/:_id')
+        axios.get('http://localhost:5000/recipe/' + window.location.pathname.split('/')[2])
         .then(res => {
             setRecipe(res.data);
         })
@@ -21,17 +21,16 @@ function Recipe() {
     return (
         <>
             <NavLoggedIn />
-            {recipes.map(recipe => (
-                <FullView 
-                    key={recipe._id}
-                    image={recipe.picture}
-                    title={recipe.name}
-                    description={recipe.description}
-                    ingredients={recipe.ingredients}
-                    instructions={recipe.instructions}
-                    username={recipe.username}
-                />
-            ))}
+            <FullView
+                key={recipes._id}
+                name={recipes.name}
+                instructions={recipes.instructions}
+                ingredients={recipes.ingredients}
+                description={recipes.description}
+                username={recipes.username}
+                picture={recipes.picture}
+            />
+           
         </>
     );
 }
