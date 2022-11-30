@@ -1,8 +1,6 @@
 import React from 'react';
 import {Grid, Typography} from '@mui/material';
 
-import ramen from './ramen.jpg';
-
 function FullView(props) {
     return (
         <>

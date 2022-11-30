@@ -1,9 +1,9 @@
 import React from 'react';
 import {Grid} from '@mui/material';
-
-import NavLoggedOut from '../components/NavLoggedOut';
-import MakeCard from '../components/MakeCard';
 import axios from 'axios';
+
+import NavLoggedOut from '../../components/Logged-Out/NavLoggedOut';
+import MakeCard from '../../components/Logged-Out/MakeCard';
 
 function TheFeed() {
     

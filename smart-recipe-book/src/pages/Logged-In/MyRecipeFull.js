@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 
-import NavLoggedIn from '../components/NavLoggedIn';
-import FullView from '../components/FullView';
+import NavLoggedIn from '../../components/Logged-In/NavLoggedIn';
+import FullView from '../../components/FullView';
 
-function Recipe() {
+function MyRecipeFull() {
 
     const [recipes, setRecipe] = React.useState({});
 
@@ -35,4 +35,4 @@ function Recipe() {
     );
 }
 
-export default Recipe;
+export default MyRecipeFull;
