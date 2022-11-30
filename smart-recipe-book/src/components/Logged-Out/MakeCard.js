@@ -4,12 +4,11 @@ import { Card, Button, Typography, CardMedia, Box, Grid} from '@mui/material';
 function MakeCard(props) {
 
     const ViewMoreClick = () => {
-        window.location.href = "/fullview";
+        window.location.href = "/loggedoutfullview/" + props.id;
     };
 
     return (
-        <div key={props.id}>
-            
+        <div>
             <Card elevation={12} sx={{height: "450px", width: "80%", marginLeft: "5%", marginTop: "10%", padding: "1%"}}>
                 <CardMedia sx={{height: "50%", width: "100%"}} component="img" image={props.picture} />
             
