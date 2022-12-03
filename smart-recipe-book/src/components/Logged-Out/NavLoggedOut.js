@@ -8,12 +8,14 @@ function NavLoggedOut() {
 
     const [login, loginIsShown] = useState(false);
     const LoginClick = () => {
-        loginIsShown(true);
+        loginIsShown(!login);
+        registerIsShown(false);
     };
 
     const [register, registerIsShown] = useState(false);
     const RegisterClick = () => {
-        registerIsShown(true);
+        registerIsShown(!register);
+        loginIsShown(false);
     }
 
     return (
@@ -22,8 +24,8 @@ function NavLoggedOut() {
             <Toolbar>
                 <Typography sx={{fontSize: "1.5rem", marginRight: "50px"}}>Smart Recipe Book</Typography>
 
-                <Button sx={{marginRight: "10px", color: "white"}} onClick={LoginClick}>Log in</Button>
-                <Button sx={{color: "white"}} onClick={RegisterClick}>Register</Button>
+                <Button sx={{marginLeft: "50px", paddingRight: "30px", fontSize: "1rem", color: "white"}} onClick={LoginClick}>Log in</Button>
+                <Button sx={{fontSize: "1rem", color: "white"}} onClick={RegisterClick}>Register</Button>
             </Toolbar>
         </AppBar>
         {login && <LogIn />}

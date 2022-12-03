@@ -27,12 +27,16 @@ const createRecipe = async (req, res) => {
     const ingredients = req.body.ingredients;
     const instructions = req.body.instructions;
     const username = req.body.username;
+    const description = req.body.description;
+    const picture = req.body.picture;
 
     const newRecipe = new recipe({
         name,
         ingredients,
         instructions,
         username,
+        description,
+        picture,
     });
 
     newRecipe.save()
@@ -62,6 +66,23 @@ const updateRecipeById = async (req, res) => {
         })
         .catch(err => res.status(400).json('Error: ' + err));
 };
+//create shopping list based on selected recipes
+const createShoppingList = async (req, res) => {
+    let shoppingList = [];
+    let recipeIds = req.body.recipeIds;
+    for (let i = 0; i < recipeIds.length; i++) {
+        let recipe = await getRecipeByID(recipeIds[i]);
+        let ingredients = recipe.ingredients.split(',');
+        for (let j = 0; j < ingredients.length; j++) {
+            if (!shoppingList.includes(ingredients[j])) {
+                shoppingList.push(ingredients[j]);
+            }
+        }
+    }
+    res.json(shoppingList);
+};
+
+
 //export the router
 module.exports = {
     getAllRecipes,
