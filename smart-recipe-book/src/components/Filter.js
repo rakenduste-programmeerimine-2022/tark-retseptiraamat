@@ -1,8 +1,8 @@
 import react from "react";
-import Button from "@mui/material/Button";
+import { Button, TextField, Box } from "@mui/material";
 import axios from "axios";
 
-const Filter = () => {
+function Filter() {
   const [ingredient, setIngredient] = react.useState("");
   const [ingredients, setIngredients] = react.useState([]);
   const [recipes, setRecipes] = react.useState([]);
@@ -31,8 +31,7 @@ const Filter = () => {
 
   react.useEffect(() => {
     if (search && searchtype == "ingredient") {
-      axios
-        .get("http://localhost:5000/recipe/")
+      axios.get("http://localhost:5000/recipe/")
         .then((res) => {
           const recipes = res.data;
           const newRecipes = [];
@@ -40,11 +39,7 @@ const Filter = () => {
             let count = 0;
             recipe.ingredients.forEach((recipeIngredient) => {
               ingredients.forEach((ingredient) => {
-                if (
-                  recipeIngredient
-                    .toLowerCase()
-                    .includes(ingredient.toLowerCase())
-                ) {
+                if (recipeIngredient.toLowerCase().includes(ingredient.toLowerCase())) {
                   count++;
                 }
               });
@@ -69,25 +64,23 @@ const Filter = () => {
                 }
             });
             setRecipes(newRecipes);
-            }
-        )
+          })
         .catch((err) => console.log(err));
     }
   }, [search]);
 
   return (
-    <div style={{ marginTop: "8vh" }}>
-      <div>
-        <Button onClick={() => setSearchType("name")}>Search by name</Button>
-        <Button onClick={() => setSearchType("ingredient")}>
-          search by ingredient
-        </Button>
+    <div style={{ marginTop: "80px" }}>
+      
+      <Box>
+        <Button sx={{color: "#0f5091ee"}} onClick={() => setSearchType("name")}>Search by name</Button>
+        <Button sx={{color: "#0f5091ee"}} onClick={() => setSearchType("ingredient")}>search by ingredient</Button>
+      </Box>
+
         {searchtype === "name" ? (
           <>
-            <input type="text" placeholder="search by name" value={recipeName} onChange={(e) => setRecipeName(e.target.value)} />
-            <Button variant="contained" onClick={searchRecipes}>
-              Search
-            </Button>
+            <TextField type="text" placeholder="search by name" value={recipeName} size="small" onChange={(e) => setRecipeName(e.target.value)} />
+            <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
 
             {recipes.map((recipe) => (
                 <div>
@@ -95,51 +88,36 @@ const Filter = () => {
                     <p>{recipe.description}</p>
                 </div>
             ))}
-
           </>
         ) : (
           <>
-            <input
-              type="text" placeholder="search by ingredient"
-              value={ingredient}
-              onChange={(e) => setIngredient(e.target.value)}
-            />
-            <Button variant="contained" onClick={addIngredient}>
-              Add
-            </Button>
-            <div>
-              {ingredients.map((ingredient, index) => (
-                <div key={index}>
-                  <p>{ingredient}</p>
-                  <Button
-                    variant="contained"
-                    onClick={() => deleteIngredient(index)}
-                  >
-                    Delete
-                  </Button>
-                </div>
-              ))}
+            <TextField sx={{float: "left", overflow: "auto"}} placeholder="search by ingredient" size="small" value={ingredient} onChange={(e) => setIngredient(e.target.value)} />
+            <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, padding: "5px", margin: "2px", backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", minWidth: "50px", float: "left"}} variant="contained" size="small" onClick={addIngredient}>Add</Button>
+
+            <div style={{float: "left", clear: "left"}}>
+            {ingredients.map((ingredient, index) => (
+              <div key={index} style={{width: "fit-content", paddingLeft: "8px", margin: "8px", backgroundColor: "#6692be5e", color: "rgb(105, 105, 105)", borderRadius: "5px", float: "left"}}>
+                {ingredient}
+                <Button sx={{minWidth: "25px", color: "rgb(105, 105, 105)", padding: "0px"}} onClick={() => deleteIngredient(index)}>x</Button>
+              </div>
+            ))}
             </div>
-            <div>
-              <Button variant="contained" onClick={searchRecipes}>
-                Search
-              </Button>
-            </div>
-            <div>
-              {recipes.map((recipe, index) => (
-                <div key={index}>
-                  <p>{recipe.recipe.name}</p>
-                  <p>{recipe.recipe.description}</p>
-                  <p>{recipe.recipe.ingredients}</p>
-                  <p>{recipe.recipe.instructions}</p>
-                </div>
-              ))}
-            </div>
+
+            <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
+
+            {recipes.map((recipe, index) => (
+              <div key={index}>
+                <p>{recipe.recipe.name}</p>
+                <p>{recipe.recipe.description}</p>
+                <p>{recipe.recipe.ingredients}</p>
+                <p>{recipe.recipe.instructions}</p>
+              </div>
+            ))}
           </>
         )}
-      </div>
     </div>
   );
+
 };
 
 export default Filter;

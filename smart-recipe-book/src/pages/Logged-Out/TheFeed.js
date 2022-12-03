@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import NavLoggedOut from '../../components/Logged-Out/NavLoggedOut';
 import MakeCard from '../../components/Logged-Out/MakeCard';
+import Filter from '../../components/Filter';
 
 function TheFeed() {
     
@@ -19,8 +20,9 @@ function TheFeed() {
     return (
         <>
             <NavLoggedOut />
+            <Filter />
             
-            <Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px"}}>
+            <Grid sx={{width: "100%", overflow: "auto", display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "20px"}}>
                 {recipes.map(recipe => (
                     
                 <MakeCard 

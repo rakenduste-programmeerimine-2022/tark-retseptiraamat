@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import NavLoggedIn from '../../components/Logged-In/NavLoggedIn';
 import MakeMyCard from '../../components/Logged-In/MakeMyCard';
+import Filter from '../../components/Filter';
 
 function MyRecipes() {
 
@@ -19,7 +20,7 @@ function MyRecipes() {
     return (
         <>
             <NavLoggedIn />
-            
+            <Filter />
             <Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px"}}>
                 {recipes.map(recipe => (
                     <MakeMyCard 
