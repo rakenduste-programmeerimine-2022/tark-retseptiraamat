@@ -1,9 +1,9 @@
 import react from "react";
 import { Button, TextField, Box } from "@mui/material";
 import axios from "axios";
-import MakeCard from "./Logged-Out/MakeCard";
+import DefaultCard from "../DefaultCard";
 
-import DefaultCard from "./DefaultCard";
+import MakeMyCard from "./MakeMyCard";
 
 function Filter() {
   const [ingredient, setIngredient] = react.useState("");
@@ -91,7 +91,7 @@ function Filter() {
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
             
             {recipes.map((recipe) => {
-               <MakeCard
+               <MakeMyCard
                 key={recipe._id}
                 name={recipe.name}
                 ingredients={recipe.ingredients}
@@ -119,7 +119,7 @@ function Filter() {
 
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
             {recipes.map((recipe) => {
-              return <MakeCard
+              return <MakeMyCard
                 key={recipe.recipe._id}
                 name={recipe.recipe.name}
                 ingredients={recipe.recipe.ingredients}
