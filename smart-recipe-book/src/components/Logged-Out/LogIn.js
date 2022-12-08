@@ -3,6 +3,8 @@ import { Grid, Paper, Typography, Button, TextField } from "@mui/material";
 import axios from "axios";
 
 function LogIn() {
+    const [search, setSearch] = React.useState(false);
+    const [errormsg, setError] = React.useState(null);
     const paperStyle = {
         position: "fixed",
         left: "40%",
@@ -12,16 +14,17 @@ function LogIn() {
         margin: "100px auto",
     };
 
-    const handleSubmit = async (e) => {
+    const HandleSubmit = async (e) => {
         e.preventDefault();
-
+        setSearch(true);
         const user = {
             email: e.target.email.value,
             password: e.target.password.value
         };
 
+        
+
         await axios.post('http://localhost:5000/users/login', user)
-    
             .then((res) => {
                 if (res.data.message === "success") {
                     window.location.href = "/myfeed";
@@ -29,6 +32,7 @@ function LogIn() {
                     sessionStorage.setItem("id", res.data.user._id);
                 }else{
                     console.log(res.data.message);
+                    setError(res.data.message);
                 }
             })
             .catch(err => console.log(err));
@@ -39,8 +43,9 @@ function LogIn() {
             <Paper elevation={20} style={paperStyle}>
                 <Grid align="center" >
                     <Typography sx={{color: "#5e89b4b7", paddingBottom: "20px"}} variant="h5">Log in</Typography>
-
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={HandleSubmit}>
+                    {search && errormsg &&
+                    <label>{errormsg}</label>}
                         <TextField sx={{paddingBottom: "15px"}} label="Email" placeholder="Enter your email address" name="email" fullWidth required />
                         <TextField label="Password" placeholder="Enter your password" type="password" name="password" fullWidth required />
 
