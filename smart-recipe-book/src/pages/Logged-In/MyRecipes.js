@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid} from '@mui/material';
+import {Grid, Button} from '@mui/material';
 import axios from 'axios';
 
 import NavLoggedIn from '../../components/Logged-In/NavLoggedIn';
@@ -15,11 +15,22 @@ function MyRecipes() {
             })
             .catch(err => console.log(err));
     }, []);
+    
+    const handleShopping = () => {
+        window.location.href = "/shoppinglist";
+    };
+
+    const handleUpload = () => {
+        window.location.href = "/uploadnew";
+    };
+
 
     return (
         <>
             <NavLoggedIn />
-            
+            <br /><br /><br /><br />
+            <Button variant="contained" onClick={handleShopping}>View shopping list</Button>
+            <Button variant="contained" onClick={handleUpload}>Upload new recipe</Button>
             <Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px"}}>
                 {recipes.map(recipe => (
                     <MakeMyCard 

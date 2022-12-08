@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Paper, Typography, Button, TextField } from "@mui/material";
 import axios from "axios";
 
-
 function LogIn() {
     const paperStyle = {
         position: "fixed",
@@ -12,7 +11,8 @@ function LogIn() {
         width: "280px",
         margin: "100px auto",
     };
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const user = {
@@ -20,12 +20,20 @@ function LogIn() {
             password: e.target.password.value
         };
 
-        axios.post('http://localhost:5000/users/login', user)
-            .then(res => console.log(res.data))
+        await axios.post('http://localhost:5000/users/login', user)
+    
+            .then((res) => {
+                if (res.data.message === "success") {
+                    window.location.href = "/myfeed";
+                    sessionStorage.setItem("username", res.data.user.username);
+                    sessionStorage.setItem("id", res.data.user._id);
+                }else{
+                    console.log(res.data.message);
+                }
+            })
             .catch(err => console.log(err));
-
-            window.location.href = "/myfeed";
     };
+
     return (
         <>
             <Paper elevation={20} style={paperStyle}>
