@@ -1,5 +1,5 @@
 import react from "react";
-import { Button, TextField, Box } from "@mui/material";
+import { Button, TextField, Box, Grid } from "@mui/material";
 import axios from "axios";
 import MakeCard from "./Logged-Out/MakeCard";
 
@@ -124,6 +124,7 @@ function Filter() {
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
             {recipes.length !== 0 ? (
               <>
+              <Grid Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px", clear: "both"}}>
                 {recipes.map((recipe) => {
                   return <MakeCard
                     key={recipe.recipe._id}
@@ -135,6 +136,7 @@ function Filter() {
                     description={recipe.recipe.description}
                   />;
                 })}
+              </Grid>
               </>
             ) : (
               search &&
