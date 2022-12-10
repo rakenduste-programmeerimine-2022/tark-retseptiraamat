@@ -117,6 +117,7 @@ function Filter() {
             </div>
 
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
+
             {recipes.map((recipe) => {
               return <MakeMyCard
                 key={recipe.recipe._id}
@@ -126,7 +127,6 @@ function Filter() {
                 picture={recipe.recipe.picture}
                 id={recipe.recipe._id}
                 description={recipe.recipe.description}
-
               />;
               
             })}

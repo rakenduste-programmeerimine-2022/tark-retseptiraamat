@@ -124,18 +124,17 @@ function Filter() {
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
             {recipes.length !== 0 ? (
               <>
-              {recipes.map((recipe) => {
-                return <MakeCard
-                  key={recipe.recipe._id}
-                  name={recipe.recipe.name}
-                  ingredients={recipe.recipe.ingredients}
-                  instructions={recipe.recipe.instructions}
-                  picture={recipe.recipe.picture}
-                  id={recipe.recipe._id}
-                  description={recipe.recipe.description}
-                />;
-                
-              })}
+                {recipes.map((recipe) => {
+                  return <MakeCard
+                    key={recipe.recipe._id}
+                    name={recipe.recipe.name}
+                    ingredients={recipe.recipe.ingredients}
+                    instructions={recipe.recipe.instructions}
+                    picture={recipe.recipe.picture}
+                    id={recipe.recipe._id}
+                    description={recipe.recipe.description}
+                  />;
+                })}
               </>
             ) : (
               search &&
@@ -147,9 +146,9 @@ function Filter() {
           </>
         )}
         {!search && (
-          <div>
+          <Box sx={{clear: "both"}}>
             <DefaultCard />
-          </div>
+          </Box>
         )}
     </div>
   );

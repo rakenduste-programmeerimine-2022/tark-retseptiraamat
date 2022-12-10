@@ -9,8 +9,8 @@ function Shopping() {
         <>
             <NavLoggedIn />
             <Box sx={{display: "flex"}}>
-                <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px"}}>Selected recipes:</Typography>
-                <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", paddingLeft: "20%"}}>Shopping list:</Typography>
+                <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", color: "grey"}}>Selected recipes:</Typography>
+                <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", paddingLeft: "20%", color: "grey"}}>Shopping list:</Typography>
             </Box>
             <AddSelectedRecipe />
         </>
