@@ -49,8 +49,6 @@ function Filter() {
             });
             if (count > 0) {
               newRecipes.push({ recipe: recipe, count: count });
-            } else {
-              alert("No recipes found");
             }
           });
           newRecipes.sort((a, b) => b.count - a.count);
@@ -69,9 +67,6 @@ function Filter() {
                 console.log(newRecipes);
                 }
             });
-            if (newRecipes.length === 0) {
-              alert("No recipes found");
-              }
             setRecipes(newRecipes);
           })
         .catch((err) => console.log(err));
@@ -90,18 +85,27 @@ function Filter() {
             <TextField type="text" placeholder="search by name" value={recipeName} size="small" onChange={(e) => setRecipeName(e.target.value)} />
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
             
-            {recipes.map((recipe) => {
-               <MakeCard
-                key={recipe._id}
-                name={recipe.name}
-                ingredients={recipe.ingredients}
-                instructions={recipe.instructions}
-                picture={recipe.picture}
-                id={recipe._id}
-                description={recipe.description}
-               />
-            })}
-            
+            {recipes.length !== 0 ? (
+            <>
+              {recipes.map((recipe) => {
+                <MakeCard
+                  key={recipe._id}
+                  name={recipe.name}
+                  ingredients={recipe.ingredients}
+                  instructions={recipe.instructions}
+                  picture={recipe.picture}
+                  id={recipe._id}
+                  description={recipe.description}
+                />
+              })}
+            </>
+            ) : (
+              search &&
+              <>
+                <br/>
+                <span>no recipes found</span>
+              </>
+            )}
           </>
         ) : (
           <>
@@ -118,18 +122,28 @@ function Filter() {
             </div>
 
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
-            {recipes.map((recipe) => {
-              return <MakeCard
-                key={recipe.recipe._id}
-                name={recipe.recipe.name}
-                ingredients={recipe.recipe.ingredients}
-                instructions={recipe.recipe.instructions}
-                picture={recipe.recipe.picture}
-                id={recipe.recipe._id}
-                description={recipe.recipe.description}
-              />;
-              
-            })}
+            {recipes.length !== 0 ? (
+              <>
+              {recipes.map((recipe) => {
+                return <MakeCard
+                  key={recipe.recipe._id}
+                  name={recipe.recipe.name}
+                  ingredients={recipe.recipe.ingredients}
+                  instructions={recipe.recipe.instructions}
+                  picture={recipe.recipe.picture}
+                  id={recipe.recipe._id}
+                  description={recipe.recipe.description}
+                />;
+                
+              })}
+              </>
+            ) : (
+              search &&
+              <>
+                <br/>
+                <span>no recipes found</span>
+              </>
+            )}
           </>
         )}
         {!search && (

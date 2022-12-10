@@ -49,8 +49,6 @@ function Filter() {
             });
             if (count > 0) {
               newRecipes.push({ recipe: recipe, count: count });
-            } else {
-              alert("No recipes found");
             }
           });
           newRecipes.sort((a, b) => b.count - a.count);
@@ -61,19 +59,18 @@ function Filter() {
     } else if (search && searchtype == "name") {
       axios.get("http://localhost:5000/recipe/")
         .then((res) => {
-            const recipes = res.data;
-            const newRecipes = [];
-            recipes.forEach((recipe) => {
-                if (recipeName.toLowerCase().includes(recipe.name.toLowerCase())) {
-                newRecipes.push(recipe);
-                console.log(newRecipes);
-                }
-            });
-            if (newRecipes.length === 0) {
-              alert("No recipes found");
+          const recipes = res.data;
+          const newRecipes = [];
+          recipes.forEach((recipe) => {
+              if (recipeName.toLowerCase().includes(recipe.name.toLowerCase())) {
+              newRecipes.push(recipe);
+              console.log(newRecipes);
               }
-            setRecipes(newRecipes);
-          })
+          });
+          newRecipes.sort((a, b) => b.count - a.count);
+          setRecipes(newRecipes);
+          console.log("hello");
+        })
         .catch((err) => console.log(err));
     }
   }, [search]);
@@ -91,15 +88,17 @@ function Filter() {
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
             
             {recipes.map((recipe) => {
-               <MakeMyCard
-                key={recipe._id}
-                name={recipe.name}
-                ingredients={recipe.ingredients}
-                instructions={recipe.instructions}
-                picture={recipe.picture}
-                id={recipe._id}
-                description={recipe.description}
-               />
+              return <MakeMyCard
+                key={recipe.recipe._id}
+                name={recipe.recipe.name}
+                ingredients={recipe.recipe.ingredients}
+                instructions={recipe.recipe.instructions}
+                picture={recipe.recipe.picture}
+                id={recipe.recipe._id}
+                description={recipe.recipe.description}
+
+              />;
+              
             })}
             
           </>
@@ -127,6 +126,7 @@ function Filter() {
                 picture={recipe.recipe.picture}
                 id={recipe.recipe._id}
                 description={recipe.recipe.description}
+
               />;
               
             })}
