@@ -47,7 +47,7 @@ const loginUser = async (req, res) => {
             if (user) {
                 bcrypt.compare(password, user.password, function (err, result) {
                     if (result == true) {
-                        res.json(user);
+                        res.json({user: user, message: "success" });
                     } else {
                         res.json({ message: "Wrong username/password combination!" });
                     }
