@@ -3,7 +3,8 @@ import {Grid, Button} from '@mui/material';
 import axios from 'axios';
 
 import NavLoggedIn from '../../components/Logged-In/NavLoggedIn';
-import MakeMyCard from '../../components/Logged-In/MakeMyCard';
+import FilterLoggedIn from '../../components/Logged-In/FilterLoggedIn';
+
 
 function MyRecipes() {
 
@@ -24,7 +25,6 @@ function MyRecipes() {
         window.location.href = "/uploadnew";
     };
 
-
     return (
         <>
             <NavLoggedIn />
@@ -32,18 +32,7 @@ function MyRecipes() {
             <Button variant="contained" onClick={handleShopping}>View shopping list</Button>
             <Button variant="contained" onClick={handleUpload}>Upload new recipe</Button>
             <Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px"}}>
-                {recipes.map(recipe => (
-                    <MakeMyCard 
-                        key={recipe._id}
-                        id={recipe._id}
-                        name={recipe.name}
-                        instructions={recipe.instructions}
-                        ingredients={recipe.ingredients}
-                        description={recipe.description}
-                        username={recipe.username}
-                        picture={recipe.picture}
-                    />
-                ))}
+                <FilterLoggedIn />
             </Grid>
         </>
     );
