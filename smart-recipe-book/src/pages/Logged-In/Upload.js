@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Button, TextField} from '@mui/material';
+import {Grid, Box, Card, Button, TextField, Typography} from '@mui/material';
 import axios from 'axios';
 
 import NavLoggedIn from '../../components/Logged-In/NavLoggedIn';
@@ -28,17 +28,19 @@ function Upload() {
     return (
         <>
             <NavLoggedIn />
-            <Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", paddingTop: "80px"}}>
-                <label>Upload recipe</label>
-                <form onSubmit={handleSubmit}>
-                    <TextField label="Title" placeholder="Enter recipe title" name="name" required/>
-                    <TextField multiline label="Description" placeholder="Enter recipe description" name="description" required/>
-                    <TextField multiline label="Ingredients" placeholder="Enter recipe ingredients" name="ingredients" required/>
-                    <TextField multiline label="Instructions" placeholder="Enter recipe instructions" name="instructions" required/>
-                    <TextField label="Image Url" placeholder="Enter image url" name="picture" required/>
-                    <Button type="submit">Upload</Button>
-                </form>
-            </Grid>
+            <Card elevation={12} sx={{height: "auto", width: "20%", position: "fixed", left: "40%", padding: "20px", marginTop: "100px"}}>
+                <Grid align="center" >
+                    <Typography variant="h4"  sx={{color: "#5e89b4b7"}}>Upload recipe</Typography>
+                    <form onSubmit={handleSubmit}>
+                        <TextField sx={{marginTop: "10px", width: "90%"}} label="Title" placeholder="Enter recipe title" name="name" required/>
+                        <TextField sx={{marginTop: "10px", width: "90%"}} multiline label="Description" placeholder="Enter recipe description" name="description" required/>
+                        <TextField sx={{marginTop: "10px", width: "90%"}} multiline label="Ingredients" placeholder="Enter recipe ingredients" name="ingredients" required/>
+                        <TextField sx={{marginTop: "10px", width: "90%"}} multiline label="Instructions" placeholder="Enter recipe instructions" name="instructions" required/>
+                        <TextField sx={{marginTop: "10px", width: "90%"}} label="Image Url" placeholder="Enter image url" name="picture" required/>
+                        <Button sx={{display: "flex", marginTop: "10px", color: "#5e89b4b7"}} type="submit">Upload</Button>
+                    </form>
+                </Grid>
+            </Card>
         </>
     );
 }
