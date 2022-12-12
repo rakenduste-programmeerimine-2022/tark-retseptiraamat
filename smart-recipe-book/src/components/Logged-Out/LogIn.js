@@ -27,9 +27,11 @@ function LogIn() {
         await axios.post('http://localhost:5000/users/login', user)
             .then((res) => {
                 if (res.data.message === "success") {
-                    window.location.href = "/myfeed";
+                    //window.location.href = "/myfeed";
                     sessionStorage.setItem("username", res.data.user.username);
                     sessionStorage.setItem("id", res.data.user._id);
+                    console.log(sessionStorage);
+                    window.location.href = "/myfeed";
                 }else{
                     console.log(res.data.message);
                     setError(res.data.message);
