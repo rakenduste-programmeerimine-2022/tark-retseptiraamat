@@ -124,6 +124,7 @@ function Filter() {
             </div>
 
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
+
             {recipes.length !== 0 ? (
               <>
               {recipes.map((recipe) => {
@@ -146,6 +147,7 @@ function Filter() {
                 <span>no recipes found</span>
               </>
             )}
+
           </>
         )}
         {!search && (

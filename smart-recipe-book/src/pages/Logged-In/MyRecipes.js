@@ -20,10 +20,12 @@ function MyRecipes() {
     return (
         <>
             <NavLoggedIn />
+
             <br /><br /><br /><br />
             <Button variant="contained" onClick={handleShopping}>View shopping list</Button>
             <Button variant="contained" onClick={handleUpload}>Upload new recipe</Button>
             <TestCard />
+
         </>
     );
 }
