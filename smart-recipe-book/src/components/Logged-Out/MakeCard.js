@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card, Button, Typography, CardMedia, Box, Grid} from '@mui/material';
+import PropTypes from 'prop-types';
 
 function MakeCard(props) {
 
@@ -22,5 +23,11 @@ function MakeCard(props) {
         </div>
     );
 }
+
+MakeCard.propTypes = {
+    picture: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+};
 
 export default MakeCard;

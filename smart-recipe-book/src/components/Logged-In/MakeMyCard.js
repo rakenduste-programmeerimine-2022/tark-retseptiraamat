@@ -1,12 +1,13 @@
 import React from 'react';
 import { Card, Button, Typography, CardMedia, Box, Grid} from '@mui/material';
+import PropTypes from 'prop-types';
 
 function MakeMyCard(props) {
 
     const ViewMoreClick = () => {
         window.location.href = "/loggedinfullview/" + props.id;
     };
-    
+
     return (
         <div>
             <Card elevation={12} sx={{height: "450px", width: "80%", marginLeft: "5%", marginTop: "10%", padding: "1%"}}>
@@ -22,5 +23,11 @@ function MakeMyCard(props) {
         </div>
     );
 }
+
+MakeMyCard.propTypes = {
+    picture: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+};
 
 export default MakeMyCard;
