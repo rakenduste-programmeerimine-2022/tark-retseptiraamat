@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button} from '@mui/material';
+import { Button, Box } from '@mui/material';
 
 import NavLoggedIn from '../../components/Logged-In/NavLoggedIn';
-import TestCard from '../../components/Logged-In/MyRecipeCard';
+import MyRecipeCard from '../../components/Logged-In/MyRecipeCard';
 
 
 function MyRecipes() {
@@ -20,12 +20,11 @@ function MyRecipes() {
     return (
         <>
             <NavLoggedIn />
-
-            <br /><br /><br /><br />
-            <Button variant="contained" onClick={handleShopping}>View shopping list</Button>
-            <Button variant="contained" onClick={handleUpload}>Upload new recipe</Button>
-            <TestCard />
-
+            <Box sx={{paddingTop: "80px", marginRight: "10px"}}>
+                <Button sx={{marginRight: "30px", color: "#0f5091ee"}} onClick={handleShopping}>View shopping list</Button>
+                <Button sx={{color: "#0f5091ee"}} onClick={handleUpload}>Upload new recipe</Button>
+            </Box>
+            <MyRecipeCard />
         </>
     );
 }
