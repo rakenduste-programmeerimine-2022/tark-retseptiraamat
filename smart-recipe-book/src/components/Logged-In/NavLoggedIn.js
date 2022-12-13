@@ -22,7 +22,7 @@ function NavLoggedIn() {
         <React.Fragment>
             <AppBar sx={{background: "#5e89b4b7"}}>
                 <Toolbar>
-                    <Typography sx={{fontSize: "1.5rem", marginRight: "50px"}}>Smart Recipe Book</Typography>
+                    <Typography sx={{fontSize: "1.5rem", marginRight: "50px"}} data-testid="header">Smart Recipe Book</Typography>
                     
                     <Box sx={{marginLeft: "50px", flexGrow: "1"}}>
                         <Button onClick={MyFeedClick} sx={{paddingRight: "30px", fontSize: "1rem", color: "white"}}>My Feed</Button>
