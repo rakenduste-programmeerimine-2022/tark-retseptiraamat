@@ -36,9 +36,17 @@ const deleteFromShoppingList = async (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 }
 
+//delete by user id and recipe id
+const deleteItemFromShoppinglist = async (req, res) => {
+    shoppinglist.findOneAndDelete({userId: req.params.userId, recipeId: req.params.recipeId})
+        .then(() => res.json('Deleted from shopping list.'))
+        .catch(err => res.status(400).json('Error: ' + err));
+}
+
 module.exports = {
     getAllShoppingListItems,
     getShoppingListItemsByUserId,
     addToShoppingList,
     deleteFromShoppingList,
+    deleteItemFromShoppinglist
 }

@@ -109,7 +109,7 @@ React.useEffect(() => {
                 </Box>
 
 
-                {addedtocart === true ?
+                {incart === true ?
                     <CartIcon onClick={AddToCartClick}/>
                     : <ShoppingCartIcon onClick={AddToCartClick}/>
                 }
