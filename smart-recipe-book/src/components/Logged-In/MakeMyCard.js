@@ -81,7 +81,6 @@ React.useEffect(() => {
                 recipeId: props.id
             })
             .then((res) => {
-                console.log(res.data);
                 setLiked(true);
             })
             .catch((err) => console.log(err));
