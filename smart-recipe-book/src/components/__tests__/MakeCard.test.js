@@ -1,24 +1,24 @@
 import React from "react";
 import {render, fireEvent, screen} from "@testing-library/react";
-import MakeMyCard from "../Logged-In/MakeMyCard";
+import MakeCard from "../Logged-Out/MakeCard";
 import "@testing-library/jest-dom/extend-expect"
 
 test ("card media exists", () => {
-    render(<MakeMyCard />);
+    render(<MakeCard />);
     expect(screen.getByTestId("card-media")).toBeInTheDocument();
 });
 
 test("card title exists", () => {
-    render(<MakeMyCard />);
+    render(<MakeCard />);
     expect(screen.getByTestId("card-title")).toBeInTheDocument();
 });
 
 test("card description exists", () => {
-    render(<MakeMyCard />);
+    render(<MakeCard />);
     expect(screen.getByTestId("card-description")).toBeInTheDocument();
 });
 
 test("view more button exists", () => {
-    render(<MakeMyCard />);
+    render(<MakeCard />);
     expect(screen.getByTestId("card-button")).toBeInTheDocument();
 });

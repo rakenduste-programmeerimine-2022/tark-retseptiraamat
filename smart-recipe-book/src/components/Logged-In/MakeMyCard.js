@@ -1,24 +1,75 @@
 import React from 'react';
 import { Card, Button, Typography, CardMedia, Box, Grid} from '@mui/material';
 import PropTypes from 'prop-types';
+import axios from 'axios';
+import ShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import CartIcon from '@mui/icons-material/ShoppingCart';
+
 
 function MakeMyCard(props) {
+
+    const [incart, setInCart] = React.useState(false);
 
     const ViewMoreClick = () => {
         window.location.href = "/loggedinfullview/" + props.id;
     };
 
+    React.useEffect(() => {
+        axios.get("http://localhost:5000/shoppinglist/user/" + sessionStorage.getItem("id"))
+        .then((response) => {
+            const data = response.data;
+            data.forEach((item) => {
+                if (item.recipeId === props.id) {
+                    setInCart(true);
+                }
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }, []);
+
+    const AddToCartClick = () => {
+        if (incart === false) {
+           
+            axios.post("http://localhost:5000/shoppinglist/add", {
+                recipeId: props.id,
+                userId: sessionStorage.getItem("id"),
+            })
+            .then((response) => {
+                setInCart(true);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
+        else{
+            axios.delete("http://localhost:5000/shoppinglist/user/" + sessionStorage.getItem("id") + "/recipe/" + props.id)
+            .then((response) => {
+                setInCart(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }
+    };
+
     return (
         <div>
             <Card elevation={12} sx={{height: "450px", width: "80%", marginLeft: "5%", marginTop: "10%", padding: "1%"}}>
-                <CardMedia sx={{height: "50%", width: "100%"}} component="img" image={props.picture} data-testid="card-media" />
+                <CardMedia sx={{height: "50%", width: "100%"}} component="img" image={props.picture} />
             
-                <Typography sx={{fontSize: "1.5rem", color: "grey"}} data-testid="card-title">{props.name}</Typography>
-                <Typography sx={{paddingBottom: "10px", color: "grey"}} data-testid="card-description">{props.description}</Typography>
+                <Typography sx={{fontSize: "1.5rem", color: "grey"}}>{props.name}</Typography>
+                <Typography sx={{paddingBottom: "10px", color: "grey"}}>{props.description}</Typography>
                 
                 <Box sx={{textAlign: "center"}}>
-                <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold"}} data-testid="card-button">View recipe</Button>
+                <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold"}}>View recipe</Button>
                 </Box>
+
+                {addedtocart === true ?
+                    <CartIcon onClick={AddToCartClick}/>
+                    : <ShoppingCartIcon onClick={AddToCartClick}/>
+                }
             </Card>
         </div>
     );
