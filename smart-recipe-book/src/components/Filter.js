@@ -13,6 +13,7 @@ function Filter() {
   const [searchtype, setSearchType] = react.useState("name");
   const [recipeName, setRecipeName] = react.useState("");
 
+  
   const addIngredient = () => {
     if (ingredient !== "") {
       setIngredients([...ingredients, ingredient]);
@@ -88,7 +89,7 @@ function Filter() {
             {recipes.length !== 0 ? (
             <>
               {recipes.map((recipe) => {
-                <MakeCard
+                return <MakeCard
                   key={recipe._id}
                   name={recipe.name}
                   ingredients={recipe.ingredients}
@@ -96,7 +97,7 @@ function Filter() {
                   picture={recipe.picture}
                   id={recipe._id}
                   description={recipe.description}
-                />
+                />;
               })}
             </>
             ) : (

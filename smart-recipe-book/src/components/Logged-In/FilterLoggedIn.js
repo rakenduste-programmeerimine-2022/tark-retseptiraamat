@@ -1,7 +1,7 @@
 import react from "react";
 import { Button, TextField, Box } from "@mui/material";
 import axios from "axios";
-import DefaultCard from "../DefaultCard";
+import  MakeLoggedInCard  from "./MakeLoggedInCard";
 
 import MakeMyCard from "./MakeMyCard";
 
@@ -12,7 +12,9 @@ function Filter() {
   const [search, setSearch] = react.useState(false);
   const [searchtype, setSearchType] = react.useState("name");
   const [recipeName, setRecipeName] = react.useState("");
-
+  let userId = sessionStorage.getItem("id");
+  
+  console.log(userId);
   const addIngredient = () => {
     if (ingredient !== "") {
       setIngredients([...ingredients, ingredient]);
@@ -59,18 +61,16 @@ function Filter() {
     } else if (search && searchtype == "name") {
       axios.get("http://localhost:5000/recipe/")
         .then((res) => {
-          const recipes = res.data;
-          const newRecipes = [];
-          recipes.forEach((recipe) => {
-              if (recipeName.toLowerCase().includes(recipe.name.toLowerCase())) {
-              newRecipes.push(recipe);
-              console.log(newRecipes);
-              }
-          });
-          newRecipes.sort((a, b) => b.count - a.count);
-          setRecipes(newRecipes);
-          console.log("hello");
-        })
+            const recipes = res.data;
+            const newRecipes = [];
+            recipes.forEach((recipe) => {
+                if (recipeName.toLowerCase().includes(recipe.name.toLowerCase())) {
+                newRecipes.push(recipe);
+                console.log(newRecipes);
+                }
+            });
+            setRecipes(newRecipes);
+          })
         .catch((err) => console.log(err));
     }
   }, [search]);
@@ -87,20 +87,27 @@ function Filter() {
             <TextField type="text" placeholder="search by name" value={recipeName} size="small" onChange={(e) => setRecipeName(e.target.value)} />
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
             
-            {recipes.map((recipe) => {
-              return <MakeMyCard
-                key={recipe.recipe._id}
-                name={recipe.recipe.name}
-                ingredients={recipe.recipe.ingredients}
-                instructions={recipe.recipe.instructions}
-                picture={recipe.recipe.picture}
-                id={recipe.recipe._id}
-                description={recipe.recipe.description}
-
-              />;
-              
-            })}
-            
+            {recipes.length !== 0 ? (
+            <>
+              {recipes.map((recipe) => {
+                <MakeMyCard
+                  key={recipe._id}
+                  name={recipe.name}
+                  ingredients={recipe.ingredients}
+                  instructions={recipe.instructions}
+                  picture={recipe.picture}
+                  id={recipe._id}
+                  description={recipe.description}
+                />
+              })}
+            </>
+            ) : (
+              search &&
+              <>
+                <br/>
+                <span>no recipes found</span>
+              </>
+            )}
           </>
         ) : (
           <>
@@ -118,23 +125,34 @@ function Filter() {
 
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
 
-            {recipes.map((recipe) => {
-              return <MakeMyCard
-                key={recipe.recipe._id}
-                name={recipe.recipe.name}
-                ingredients={recipe.recipe.ingredients}
-                instructions={recipe.recipe.instructions}
-                picture={recipe.recipe.picture}
-                id={recipe.recipe._id}
-                description={recipe.recipe.description}
-              />;
-              
-            })}
+            {recipes.length !== 0 ? (
+              <>
+              {recipes.map((recipe) => {
+                return <MakeMyCard
+                  key={recipe.recipe._id}
+                  name={recipe.recipe.name}
+                  ingredients={recipe.recipe.ingredients}
+                  instructions={recipe.recipe.instructions}
+                  picture={recipe.recipe.picture}
+                  id={recipe.recipe._id}
+                  description={recipe.recipe.description}
+                />;
+                
+              })}
+              </>
+            ) : (
+              search &&
+              <>
+                <br/>
+                <span>no recipes found</span>
+              </>
+            )}
+
           </>
         )}
         {!search && (
           <div>
-            <DefaultCard />
+            <MakeLoggedInCard />
           </div>
         )}
     </div>
