@@ -1,9 +1,9 @@
 import react from "react";
-import { Button, TextField, Box, Grid } from "@mui/material";
+import { Button, TextField, Box } from "@mui/material";
 import axios from "axios";
-import MakeCard from "./Logged-Out/MakeCard";
+import  MakeLoggedInCard  from "./MakeLoggedInCard";
 
-import DefaultCard from "./DefaultCard";
+import MakeMyCard from "./MakeMyCard";
 
 function Filter() {
   const [ingredient, setIngredient] = react.useState("");
@@ -12,8 +12,9 @@ function Filter() {
   const [search, setSearch] = react.useState(false);
   const [searchtype, setSearchType] = react.useState("name");
   const [recipeName, setRecipeName] = react.useState("");
-
+  let userId = sessionStorage.getItem("id");
   
+  console.log(userId);
   const addIngredient = () => {
     if (ingredient !== "") {
       setIngredients([...ingredients, ingredient]);
@@ -89,7 +90,7 @@ function Filter() {
             {recipes.length !== 0 ? (
             <>
               {recipes.map((recipe) => {
-                return <MakeCard
+                <MakeMyCard
                   key={recipe._id}
                   name={recipe.name}
                   ingredients={recipe.ingredients}
@@ -97,7 +98,7 @@ function Filter() {
                   picture={recipe.picture}
                   id={recipe._id}
                   description={recipe.description}
-                />;
+                />
               })}
             </>
             ) : (
@@ -123,21 +124,21 @@ function Filter() {
             </div>
 
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
+
             {recipes.length !== 0 ? (
               <>
-              <Grid Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px", clear: "both"}}>
-                {recipes.map((recipe) => {
-                  return <MakeCard
-                    key={recipe.recipe._id}
-                    name={recipe.recipe.name}
-                    ingredients={recipe.recipe.ingredients}
-                    instructions={recipe.recipe.instructions}
-                    picture={recipe.recipe.picture}
-                    id={recipe.recipe._id}
-                    description={recipe.recipe.description}
-                  />;
-                })}
-              </Grid>
+              {recipes.map((recipe) => {
+                return <MakeMyCard
+                  key={recipe.recipe._id}
+                  name={recipe.recipe.name}
+                  ingredients={recipe.recipe.ingredients}
+                  instructions={recipe.recipe.instructions}
+                  picture={recipe.recipe.picture}
+                  id={recipe.recipe._id}
+                  description={recipe.recipe.description}
+                />;
+                
+              })}
               </>
             ) : (
               search &&
@@ -146,12 +147,13 @@ function Filter() {
                 <span>no recipes found</span>
               </>
             )}
+
           </>
         )}
         {!search && (
-          <Box sx={{clear: "both"}}>
-            <DefaultCard />
-          </Box>
+          <div>
+            <MakeLoggedInCard />
+          </div>
         )}
     </div>
   );

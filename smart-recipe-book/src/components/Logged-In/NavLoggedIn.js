@@ -12,6 +12,12 @@ function NavLoggedIn() {
         window.location.href = "/myrecipes";
     };
 
+    const LogOutClick = () => {
+        sessionStorage.removeItem("username");
+        sessionStorage.removeItem("id");
+        window.location.href = "/";
+    };
+
     return (
         <React.Fragment>
             <AppBar sx={{background: "#5e89b4b7"}}>
@@ -24,7 +30,7 @@ function NavLoggedIn() {
                     </Box>
                     
                     <Stack sx={{direction: "row", spacing: "2"}}>
-                        <Button sx={{fontSize: "1rem", color: "white"}}>Log out</Button>
+                        <Button onClick={LogOutClick} sx={{fontSize: "1rem", color: "white"}}>Log out</Button>
                     </Stack>
                 </Toolbar>
             </AppBar>
