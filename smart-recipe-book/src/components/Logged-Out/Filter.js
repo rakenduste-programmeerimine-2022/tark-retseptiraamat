@@ -76,7 +76,6 @@ function Filter() {
 
   return (
     <div style={{ marginTop: "80px" }}>
-      
       <Box>
         <Button sx={{color: "#0f5091ee"}} onClick={() => setSearchType("name")}>Search by name</Button>
         <Button sx={{color: "#0f5091ee"}} onClick={() => setSearchType("ingredient")}>search by ingredient</Button>

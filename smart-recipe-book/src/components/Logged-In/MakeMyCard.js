@@ -104,19 +104,19 @@ React.useEffect(() => {
                 <Typography sx={{fontSize: "1.5rem", color: "grey"}}>{props.name}</Typography>
                 <Typography sx={{paddingBottom: "10px", color: "grey"}}>{props.description}</Typography>
                 
-                <Box sx={{textAlign: "center"}}>
-                <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold"}}>View recipe</Button>
+                <Box sx={{display: "flex", flexDirection: "row"}}>
+                    <Button onClick={ViewMoreClick} sx={{textAlign: "center", color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold"}}>View recipe</Button>
+                    <Box sx={{textAlign: "end"}}>
+                    {incart === true ?
+                        <CartIcon onClick={AddToCartClick}/>
+                        : <ShoppingCartIcon onClick={AddToCartClick}/>
+                    }
+
+                    {liked === true ? 
+                        <FavoriteIcon sx={{color: "red"}} onClick={likeClick} />
+                    : <FavoriteBorderIcon sx={{color: "red"}} onClick={likeClick}  />}
+                    </Box>
                 </Box>
-
-
-                {incart === true ?
-                    <CartIcon onClick={AddToCartClick}/>
-                    : <ShoppingCartIcon onClick={AddToCartClick}/>
-                }
-
-                {liked === true ? 
-                    <FavoriteIcon sx={{color: "red"}} onClick={likeClick} />
-                  : <FavoriteBorderIcon sx={{color: "red"}} onClick={likeClick}  />}
 
             </Card>
         </div>
