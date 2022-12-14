@@ -14,7 +14,6 @@ function Filter() {
   const [recipeName, setRecipeName] = react.useState("");
   let userId = sessionStorage.getItem("id");
   
-  console.log(userId);
   const addIngredient = () => {
     if (ingredient !== "") {
       setIngredients([...ingredients, ingredient]);
@@ -54,7 +53,6 @@ function Filter() {
             }
           });
           newRecipes.sort((a, b) => b.count - a.count);
-          console.log(newRecipes);
           setRecipes(newRecipes);
         })
         .catch((err) => console.log(err));
@@ -66,7 +64,6 @@ function Filter() {
             recipes.forEach((recipe) => {
                 if (recipeName.toLowerCase().includes(recipe.name.toLowerCase())) {
                 newRecipes.push(recipe);
-                console.log(newRecipes);
                 }
             });
             setRecipes(newRecipes);
@@ -90,7 +87,7 @@ function Filter() {
             {recipes.length !== 0 ? (
             <>
               {recipes.map((recipe) => {
-                <MakeMyCard
+                return <MakeMyCard
                   key={recipe._id}
                   name={recipe.name}
                   ingredients={recipe.ingredients}
