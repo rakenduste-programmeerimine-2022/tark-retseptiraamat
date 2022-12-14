@@ -42,35 +42,36 @@ function Shopping() {
     return (
         <>
             <NavLoggedIn />
-            <Box sx={{display: "flex"}}>
-                
-                
-            </Box>
             
-            <Grid sx={{marginLeft: "3%", display: "flex", flexDirection: "column"}}>
-            <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", color: "grey"}}>Selected recipes:</Typography>
-                <Box sx={{display: "flex", flexDirection: "column", width: "fit-content", color: "rgb(105, 105, 105)"}}>
-                    {recipes.map(recipe => (
-                        <span
-                            style={{margin: "5px", backgroundColor: "#6692be5e", paddingRight: "8px", borderRadius: "5px"}} 
-                            key={recipe._id} 
-                            id={recipe._id}
-                        >
-                        <Button sx={{minWidth: "25px", color: "rgb(105, 105, 105)"}} id={recipe._id} onClick={() => removeRecipe(recipe._id)}>x</Button>
-                        {recipe.name}     
-                        </span>
-                    ))}
-                </Box>
+            <Grid sx={{display: "flex", flexDirection: "row", width: "100%"}}>
+                <Grid sx={{marginLeft: "3%", display: "flex", flexDirection: "column", width: "40%"}}>
+                    <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", color: "grey"}}>Selected recipes:</Typography>
+                    <Box sx={{display: "flex", flexDirection: "column", width: "fit-content", color: "rgb(105, 105, 105)", marginLeft: "5%"}}>
+                        {recipes.map(recipe => (
+                            <span
+                                style={{margin: "5px", backgroundColor: "#6692be5e", paddingRight: "8px", borderRadius: "5px", fontSize: "1.3rem"}} 
+                                key={recipe._id} 
+                                id={recipe._id}
+                            >
+                            <Button sx={{minWidth: "25px", color: "rgb(105, 105, 105)"}} id={recipe._id} onClick={() => removeRecipe(recipe._id)}>x</Button>
+                            {recipe.name}     
+                            </span>
+                        ))}
+                    </Box>
+                </Grid>
 
-                <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", paddingLeft: "20%", color: "grey"}}>Shopping list:</Typography>
-                <Box sx={{marginLeft: "40%"}}>
-                    {recipes.map(recipe => (
-                        <span key={recipe._id}>
-                            {recipe.ingredients}
-                            <br />
-                        </span>
-                    ))}
-                </Box>
+                <Grid sx={{marginLeft: "3%", display: "flex", flexDirection: "column", width: "40%"}}>
+                    <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", paddingLeft: "20%", color: "grey"}}>Shopping list:</Typography>
+                    <Box sx={{marginLeft: "25%", fontSize: "1.2rem", color: "rgb(105, 105, 105)", textDecoration: ""}}>
+                        {recipes.map(recipe => (
+                            <li style={{listStyle: "square"}} 
+                                key={recipe._id}>
+                                {recipe.ingredients}
+                                <br />
+                            </li>
+                        ))}
+                    </Box>
+                </Grid>
             </Grid>
         </>
     );
