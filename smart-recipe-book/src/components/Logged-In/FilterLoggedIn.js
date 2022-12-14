@@ -86,6 +86,7 @@ function Filter() {
             
             {recipes.length !== 0 ? (
             <>
+            <Grid Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px", clear: "both"}}>
               {recipes.map((recipe) => {
                 return <MakeMyCard
                   key={recipe._id}
@@ -97,6 +98,7 @@ function Filter() {
                   description={recipe.description}
                 />
               })}
+            </Grid>
             </>
             ) : (
               search &&
