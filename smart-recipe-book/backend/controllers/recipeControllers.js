@@ -20,8 +20,8 @@ const getRecipeByIngredient = async (req, res) => {
         .then(recipe => res.json(recipe))
         .catch(err => res.status(400).json('Error: ' + err));
 };
-//add a recipe
 
+//add a recipe
 const createRecipe = async (req, res) => {
     const name = req.body.name;
     const ingredients = req.body.ingredients;
@@ -44,13 +44,13 @@ const createRecipe = async (req, res) => {
         .catch(err => res.status(400).json('Error: ' + err));
 }
 
-
 //delete a recipe
 const deleteRecipeById = async (req, res) => {
     recipe.findByIdAndDelete(req.params.id)
         .then(() => res.json('Recipe deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));
 };
+
 //update a recipe
 const updateRecipeById = async (req, res) => {
     recipe.findById(req.params.id)
@@ -66,6 +66,7 @@ const updateRecipeById = async (req, res) => {
         })
         .catch(err => res.status(400).json('Error: ' + err));
 };
+
 //create shopping list based on selected recipes
 const createShoppingList = async (req, res) => {
     let shoppingList = [];
@@ -81,7 +82,6 @@ const createShoppingList = async (req, res) => {
     }
     res.json(shoppingList);
 };
-
 
 //export the router
 module.exports = {

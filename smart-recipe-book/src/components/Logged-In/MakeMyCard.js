@@ -74,6 +74,7 @@ React.useEffect(() => {
         })
         .catch((err) => console.log(err));
     }, []);
+    
     const likeClick = () => {
         if (liked === false) {
             axios.post('http://localhost:5000/like/add', {
