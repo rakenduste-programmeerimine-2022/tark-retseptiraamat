@@ -1,9 +1,9 @@
 import react from "react";
 import { Button, TextField, Box, Grid } from "@mui/material";
 import axios from "axios";
-import MakeCard from "./Logged-Out/MakeCard";
+import MakeCard from "./MakeCard";
 
-import DefaultCard from "./DefaultCard";
+import DefaultCard from "../DefaultCard";
 
 function Filter() {
   const [ingredient, setIngredient] = react.useState("");
