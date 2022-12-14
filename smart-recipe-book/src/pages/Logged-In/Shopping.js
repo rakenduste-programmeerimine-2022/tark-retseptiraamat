@@ -1,9 +1,8 @@
 import React from "react";
-import { Typography, Box, Checkbox, Input, Button } from "@mui/material";
+import { Typography, Box, Button, Grid } from "@mui/material";
 import axios from "axios";
 
 import NavLoggedIn from "../../components/Logged-In/NavLoggedIn";
-import AddSelectedRecipe from "../../components/Logged-In/AddSelectedRecipe";
 
 function Shopping() {
     const [recipes, setRecipes] = React.useState([]);
@@ -40,37 +39,39 @@ function Shopping() {
             });
     }
 
-
     return (
         <>
             <NavLoggedIn />
             <Box sx={{display: "flex"}}>
-                <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", color: "grey"}}>Selected recipes:</Typography>
-                <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", paddingLeft: "20%", color: "grey"}}>Shopping list:</Typography>
+                
+                
             </Box>
             
-            <Box sx={{marginLeft: "3%", display: "flex"}}>
-                <Box sx={{display: "flex", flexDirection: "column"}}>
-                {recipes.map(recipe => (
-                    <span 
-                        key={recipe._id} 
-                        id={recipe._id}
-                    >
-                    <Button id={recipe._id} onClick={() => removeRecipe(recipe._id)}>Remove</Button>
-                    {recipe.name}     
-                    </span>
-                    
-                ))}
+            <Grid sx={{marginLeft: "3%", display: "flex", flexDirection: "column"}}>
+            <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", color: "grey"}}>Selected recipes:</Typography>
+                <Box sx={{display: "flex", flexDirection: "column", width: "fit-content", color: "rgb(105, 105, 105)"}}>
+                    {recipes.map(recipe => (
+                        <span
+                            style={{margin: "5px", backgroundColor: "#6692be5e", paddingRight: "8px", borderRadius: "5px"}} 
+                            key={recipe._id} 
+                            id={recipe._id}
+                        >
+                        <Button sx={{minWidth: "25px", color: "rgb(105, 105, 105)"}} id={recipe._id} onClick={() => removeRecipe(recipe._id)}>x</Button>
+                        {recipe.name}     
+                        </span>
+                    ))}
                 </Box>
-                <Box sx={{marginLeft: "34%"}}>
-                {recipes.map(recipe => (
-                    <span key={recipe._id}>
-                        {recipe.ingredients}
-                        <br />
-                    </span>
-                ))}
+
+                <Typography variant="h4" sx={{margin: "20px", paddingTop: "70px", paddingLeft: "20%", color: "grey"}}>Shopping list:</Typography>
+                <Box sx={{marginLeft: "40%"}}>
+                    {recipes.map(recipe => (
+                        <span key={recipe._id}>
+                            {recipe.ingredients}
+                            <br />
+                        </span>
+                    ))}
                 </Box>
-            </Box>
+            </Grid>
         </>
     );
 };
