@@ -17,7 +17,7 @@ function MakeCard(props) {
                 <Typography sx={{paddingBottom: "10px", color: "grey"}} data-testid="card-description">{props.description}</Typography>
                 
                 <Box sx={{textAlign: "center"}}> 
-                <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold"}} data-testid="card-button">View recipe</Button>
+                <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold", position: "relative", bottom: "-80px"}} data-testid="card-button">View recipe</Button>
                 </Box>
             </Card>
         </div>

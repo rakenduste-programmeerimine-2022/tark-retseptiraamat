@@ -8,9 +8,10 @@ function Register() {
         position: "fixed",
         left: "40%",
         padding: "20px",
-        height: "350px",
+        height: "320px",
         width: "280px",
         margin: "100px auto",
+        zIndex: "2"
     };
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -38,8 +39,7 @@ function Register() {
                         <TextField sx={{paddingBottom: "15px"}} label="Username" name="username" placeholder="Enter username" fullWidth required />
                         <TextField label="Password" placeholder="Enter your password" type="password" name="password"fullWidth required />
 
-                        <Button sx={{marginTop: "5px", color: "#5e89b4b7"}} >Already have an account?</Button>
-                        <Button sx={{marginTop: "15px", backgroundColor: "#5e89b4b7"}} variant="contained" type="submit">Register</Button>
+                        <Button sx={{marginTop: "30px", backgroundColor: "#5e89b4b7"}} variant="contained" type="submit">Register</Button>
                     </form>
                 </Grid>
             </Paper>
@@ -48,3 +48,5 @@ function Register() {
 }
 
 export default Register;
+
+/*<Button sx={{marginTop: "5px", color: "#5e89b4b7"}} >Already have an account?</Button>*/
