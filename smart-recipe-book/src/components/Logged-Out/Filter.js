@@ -34,7 +34,7 @@ function Filter() {
   };
 
   react.useEffect(() => {
-    if (search && searchtype == "ingredient") {
+    if (search && searchtype === "ingredient") {
       axios.get("http://localhost:5000/recipe/")
         .then((res) => {
           const recipes = res.data;
@@ -57,7 +57,7 @@ function Filter() {
           setRecipes(newRecipes);
         })
         .catch((err) => console.log(err));
-    } else if (search && searchtype == "name") {
+    } else if (search && searchtype === "name") {
       axios.get("http://localhost:5000/recipe/")
         .then((res) => {
             const recipes = res.data;

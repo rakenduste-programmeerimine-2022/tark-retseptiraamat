@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Typography, CardMedia, Box, Grid} from '@mui/material';
+import { Card, Button, Typography, CardMedia, Box } from '@mui/material';
 import PropTypes from 'prop-types';
 
 function MakeCard(props) {

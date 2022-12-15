@@ -13,7 +13,6 @@ function MakeLoggedInCard() {
         axios.get('http://localhost:5000/recipe/')
             .then(res => {
                 setRecipes(res.data);
-                console.log(res.data);
             })
             .catch(err => console.log(err));
     }, []);
