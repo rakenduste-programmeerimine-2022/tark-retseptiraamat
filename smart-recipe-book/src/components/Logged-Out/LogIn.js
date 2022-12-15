@@ -9,7 +9,7 @@ function LogIn() {
         position: "fixed",
         left: "40%",
         padding: "20px",
-        height: "250px",
+        height: "270px",
         width: "280px",
         margin: "100px auto",
         zIndex: "2",
@@ -28,7 +28,6 @@ function LogIn() {
         await axios.post('http://localhost:5000/users/login', user)
             .then((res) => {
                 if (res.data.message === "success") {
-                    //window.location.href = "/myfeed";
                     sessionStorage.setItem("username", res.data.user.username);
                     sessionStorage.setItem("id", res.data.user._id);
                     window.location.href = "/myfeed";
@@ -46,7 +45,7 @@ function LogIn() {
                     <Typography sx={{color: "#5e89b4b7", paddingBottom: "20px"}} variant="h5">Log in</Typography>
                     <form onSubmit={HandleSubmit}>
                     {search && errormsg &&
-                    <label>{errormsg}</label>}
+                    <label style={{padding: "10px", color: "#5e89b4b7"}}>{errormsg}</label>}
                         <TextField sx={{paddingBottom: "15px"}} label="Email" placeholder="Enter your email address" name="email" fullWidth required />
                         <TextField label="Password" placeholder="Enter your password" type="password" name="password" fullWidth required />
 

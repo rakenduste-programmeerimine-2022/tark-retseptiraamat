@@ -105,8 +105,8 @@ React.useEffect(() => {
                 <Typography sx={{paddingBottom: "10px", color: "grey"}}>{props.description}</Typography>
                 
                 <Box sx={{display: "flex", flexDirection: "row"}}>
-                    <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", fontWeight: "bold", position: "relative", left: "80px", bottom: "-80px"}}>View recipe</Button>
-                    <Box sx={{position: "relative", left: "110px", bottom: "-90px"}}>
+                    <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", fontWeight: "bold", position: "relative", left: "80px", bottom: "-100px"}}>View recipe</Button>
+                    <Box sx={{position: "relative", left: "110px", bottom: "-110px"}}>
                     {incart === true ?
                         <CartIcon onClick={AddToCartClick}/>
                         : <ShoppingCartIcon onClick={AddToCartClick}/>
