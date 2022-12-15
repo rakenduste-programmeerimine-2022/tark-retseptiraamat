@@ -7,10 +7,7 @@ const Schema = mongoose.Schema;
 const recipeSchema = new Schema({
     name: { type: String, required: true },
     //ingrediets is an array of objects with name and quantity
-    ingredients: {
-        ingredient: { type: String, required: true },
-        quantity: { type: String, required: true },
-    },
+    ingredients: { type: Array, required: true },
     instructions: { type: String, required: true },
     username: { type: String, required: true },
     description: { type: String, required: true },

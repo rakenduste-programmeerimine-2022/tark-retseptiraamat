@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Typography, CardMedia, Box, Grid} from '@mui/material';
+import { Card, Button, Typography, CardMedia, Box} from '@mui/material';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -30,7 +30,7 @@ function MakeMyCard(props) {
         .catch((error) => {
             console.log(error);
         });
-    }, []);
+    }, [props.id]);
 
     const AddToCartClick = () => {
         if (incart === false) {
@@ -73,7 +73,7 @@ React.useEffect(() => {
             });
         })
         .catch((err) => console.log(err));
-    }, []);
+    }, [props.id]);
     
     const likeClick = () => {
         if (liked === false) {
