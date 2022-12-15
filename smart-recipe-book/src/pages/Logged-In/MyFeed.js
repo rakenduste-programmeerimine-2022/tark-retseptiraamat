@@ -4,11 +4,8 @@ import axios from 'axios';
 
 import NavLoggedIn from '../../components/Logged-In/NavLoggedIn';
 import FilterLoggedIn from '../../components/Logged-In/FilterLoggedIn';
-import Filter from '../../components/Filter';
 
 function MyFeed() {
-
-    
 
     return (
         <>

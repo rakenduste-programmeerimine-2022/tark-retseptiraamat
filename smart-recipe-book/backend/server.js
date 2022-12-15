@@ -22,11 +22,12 @@ connection.once('open', () => {
 const recipesRouter = require('./routes/recipe');
 const usersRouter = require('./routes/users');
 const likesRouter = require('./routes/like');
+const shoppinglistRouter = require('./routes/shoppinglist');
 
 app.use('/recipe', recipesRouter);
 app.use('/users', usersRouter);
 app.use('/like', likesRouter);
-
+app.use('/shoppinglist', shoppinglistRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

@@ -1,5 +1,5 @@
 import react from "react";
-import { Button, TextField, Box } from "@mui/material";
+import { Button, TextField, Box, Grid } from "@mui/material";
 import axios from "axios";
 import  MakeLoggedInCard  from "./MakeLoggedInCard";
 
@@ -14,7 +14,6 @@ function Filter() {
   const [recipeName, setRecipeName] = react.useState("");
   let userId = sessionStorage.getItem("id");
   
-  console.log(userId);
   const addIngredient = () => {
     if (ingredient !== "") {
       setIngredients([...ingredients, ingredient]);
@@ -54,7 +53,6 @@ function Filter() {
             }
           });
           newRecipes.sort((a, b) => b.count - a.count);
-          console.log(newRecipes);
           setRecipes(newRecipes);
         })
         .catch((err) => console.log(err));
@@ -66,7 +64,6 @@ function Filter() {
             recipes.forEach((recipe) => {
                 if (recipeName.toLowerCase().includes(recipe.name.toLowerCase())) {
                 newRecipes.push(recipe);
-                console.log(newRecipes);
                 }
             });
             setRecipes(newRecipes);
@@ -89,8 +86,9 @@ function Filter() {
             
             {recipes.length !== 0 ? (
             <>
+            <Grid Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px", clear: "both"}}>
               {recipes.map((recipe) => {
-                <MakeMyCard
+                return <MakeMyCard
                   key={recipe._id}
                   name={recipe.name}
                   ingredients={recipe.ingredients}
@@ -100,6 +98,7 @@ function Filter() {
                   description={recipe.description}
                 />
               })}
+            </Grid>
             </>
             ) : (
               search &&
@@ -124,21 +123,21 @@ function Filter() {
             </div>
 
             <Button sx={{"&:hover": {backgroundColor: "#5c84acb6"}, backgroundColor: "#6692be7c", color: "rgb(105, 105, 105)", padding: "5px", margin: "2px"}} size="small" variant="contained" onClick={searchRecipes}>Search</Button>
-
             {recipes.length !== 0 ? (
               <>
-              {recipes.map((recipe) => {
-                return <MakeMyCard
-                  key={recipe.recipe._id}
-                  name={recipe.recipe.name}
-                  ingredients={recipe.recipe.ingredients}
-                  instructions={recipe.recipe.instructions}
-                  picture={recipe.recipe.picture}
-                  id={recipe.recipe._id}
-                  description={recipe.recipe.description}
-                />;
-                
-              })}
+              <Grid Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px", clear: "both"}}>
+                {recipes.map((recipe) => {
+                  return <MakeMyCard
+                    key={recipe.recipe._id}
+                    name={recipe.recipe.name}
+                    ingredients={recipe.recipe.ingredients}
+                    instructions={recipe.recipe.instructions}
+                    picture={recipe.recipe.picture}
+                    id={recipe.recipe._id}
+                    description={recipe.recipe.description}
+                  />;
+                })}
+              </Grid>
               </>
             ) : (
               search &&
@@ -151,9 +150,9 @@ function Filter() {
           </>
         )}
         {!search && (
-          <div>
+          <Box sx={{clear: "both"}}>
             <MakeLoggedInCard />
-          </div>
+          </Box>
         )}
     </div>
   );

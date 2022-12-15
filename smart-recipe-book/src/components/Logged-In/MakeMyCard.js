@@ -74,6 +74,7 @@ React.useEffect(() => {
         })
         .catch((err) => console.log(err));
     }, []);
+    
     const likeClick = () => {
         if (liked === false) {
             axios.post('http://localhost:5000/like/add', {
@@ -81,7 +82,6 @@ React.useEffect(() => {
                 recipeId: props.id
             })
             .then((res) => {
-                console.log(res.data);
                 setLiked(true);
             })
             .catch((err) => console.log(err));
@@ -104,19 +104,19 @@ React.useEffect(() => {
                 <Typography sx={{fontSize: "1.5rem", color: "grey"}}>{props.name}</Typography>
                 <Typography sx={{paddingBottom: "10px", color: "grey"}}>{props.description}</Typography>
                 
-                <Box sx={{textAlign: "center"}}>
-                <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", justifyContent: "center", fontWeight: "bold"}}>View recipe</Button>
+                <Box sx={{display: "flex", flexDirection: "row"}}>
+                    <Button onClick={ViewMoreClick} sx={{color: "#5e89b4b7", fontWeight: "bold", position: "relative", left: "80px", bottom: "-80px"}}>View recipe</Button>
+                    <Box sx={{position: "relative", left: "110px", bottom: "-90px"}}>
+                    {incart === true ?
+                        <CartIcon onClick={AddToCartClick}/>
+                        : <ShoppingCartIcon onClick={AddToCartClick}/>
+                    }
+
+                    {liked === true ? 
+                        <FavoriteIcon sx={{color: "red"}} onClick={likeClick} />
+                        : <FavoriteBorderIcon sx={{color: "red"}} onClick={likeClick}  />}
+                    </Box>
                 </Box>
-
-
-                {addedtocart === true ?
-                    <CartIcon onClick={AddToCartClick}/>
-                    : <ShoppingCartIcon onClick={AddToCartClick}/>
-                }
-
-                {liked === true ? 
-                    <FavoriteIcon sx={{color: "red"}} onClick={likeClick} />
-                  : <FavoriteBorderIcon sx={{color: "red"}} onClick={likeClick}  />}
 
             </Card>
         </div>

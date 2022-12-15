@@ -11,11 +11,11 @@ function Upload() {
 
         const recipe = {
             name: e.target.name.value,
-            ingredients: e.target.ingredients.value,
+            ingredients: e.target.ingredients.value.split(", "),
             instructions: e.target.instructions.value,
             description: e.target.description.value,
             picture: e.target.picture.value,
-            username: localStorage.getItem("username")
+            username: sessionStorage.getItem("username")
         };
 
         axios.post('http://localhost:5000/recipe/add', recipe)
@@ -28,7 +28,7 @@ function Upload() {
     return (
         <>
             <NavLoggedIn />
-            <Card elevation={12} sx={{height: "auto", width: "20%", position: "fixed", left: "40%", padding: "20px", marginTop: "100px"}}>
+            <Card elevation={12} sx={{height: "auto", width: "20%", minWidth: "300px", position: "fixed", left: "35%", padding: "20px", marginTop: "100px"}}>
                 <Grid align="center" >
                     <Typography variant="h4"  sx={{color: "#5e89b4b7"}}>Upload recipe</Typography>
                     <form onSubmit={handleSubmit}>

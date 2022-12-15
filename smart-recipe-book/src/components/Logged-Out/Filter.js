@@ -1,9 +1,9 @@
 import react from "react";
 import { Button, TextField, Box, Grid } from "@mui/material";
 import axios from "axios";
-import MakeCard from "./Logged-Out/MakeCard";
+import MakeCard from "./MakeCard";
 
-import DefaultCard from "./DefaultCard";
+import DefaultCard from "../DefaultCard";
 
 function Filter() {
   const [ingredient, setIngredient] = react.useState("");
@@ -76,7 +76,6 @@ function Filter() {
 
   return (
     <div style={{ marginTop: "80px" }}>
-      
       <Box>
         <Button sx={{color: "#0f5091ee"}} onClick={() => setSearchType("name")}>Search by name</Button>
         <Button sx={{color: "#0f5091ee"}} onClick={() => setSearchType("ingredient")}>search by ingredient</Button>
@@ -88,6 +87,7 @@ function Filter() {
             
             {recipes.length !== 0 ? (
             <>
+            <Grid Grid sx={{display: "grid", gridTemplateColumns: "repeat(auto-fill, 350px)", justifyContent: "center", gridGap: "30px", paddingTop: "50px", clear: "both"}}>
               {recipes.map((recipe) => {
                 return <MakeCard
                   key={recipe._id}
@@ -99,6 +99,7 @@ function Filter() {
                   description={recipe.description}
                 />;
               })}
+            </Grid>
             </>
             ) : (
               search &&
